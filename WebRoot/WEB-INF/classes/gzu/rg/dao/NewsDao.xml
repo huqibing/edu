@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gzu.rg.dao.NewsDao">
+	<select id="selectNews" resultType="News">
+		select * from news;
+	</select>
+	<!-- 分页 -->
+	<select id="selectNewsById" resultType="News">
+		select * from news where news_id = #{news_id}
+	</select>
+	<insert id="insertNews">
+		insert into news(news_title,news_details,news_time,news_picture)
+		values(#{news_title},#{news_details},#{news_time},#{news_picture});
+	</insert>
+	<update id="updateNews">
+		update news
+		set news_title = #{news_title},news_details = #{news_details},
+			news_time = #{news_time},news_picture = #{news_picture}
+		where news_id = #{news_id};
+	</update>
+	<delete id="deleteNews">
+		delete from news
+		where news_id = #{news_id}
+	</delete>
+</mapper>
