@@ -37,11 +37,11 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="news.jsp"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
-                        <li><a href="student.jsp"><i class="icon-font">&#xe005;</i>学员管理</a></li>
-                        <li><a href="teacher.jsp"><i class="icon-font">&#xe006;</i>教师管理</a></li>
-                        <li><a href="message.jsp"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="course.jsp"><i class="icon-font">&#xe012;</i>课程管理</a></li>
+                        <li><a href="jump.do?target=news"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
+                        <li><a href="jump.do?target=student"><i class="icon-font">&#xe005;</i>学员管理</a></li>
+                        <li><a href="jump.do?target=teacher"><i class="icon-font">&#xe006;</i>教师管理</a></li>
+                        <li><a href="jump.do?target=message"><i class="icon-font">&#xe004;</i>留言管理</a></li>
+                        <li><a href="jump.do?target=course"><i class="icon-font">&#xe012;</i>课程管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -64,7 +64,7 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath }/teacher/updateteacher.do" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody><tr>
                             <th width="120"><i class="require-red">*</i>分类：</th>
@@ -75,28 +75,34 @@
                                 </select>
                             </td>
                         </tr>
-                            <tr>
-                                <th><i class="require-red">*</i>学员姓名</th>
+                        <tr>
+                                <th><i class="require-red">*</i>需要修改编号</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                    <input type="text" name="t_id" value="<%=request.getParameter("t_id")%>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>教师姓名</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="t_name" size="50" value="" type="text">
                                 </td>
                             </tr>
                             <tr>
                             <th>性别：</th>
                             <td>
-                                <select name="colId" id="catid" class="required">
-                                    <option value="">请选择</option>
-                                    <option value="19">男</option><option value="20">女</option>
+                                <select name="t_sex" id="t_sex" class="required">
+                                    <option >请选择</option>
+                                    <option >男</option><option>女</option>
                                 </select>
                             </td>
                             </tr>
                             <tr>
                                 <th>年龄：</th>
-                                <td><input class="common-text" name="author" size="50" value="" type="text"></td>
+                                <td><input class="common-text" name="t_age" size="50"  type="text"></td>
                             </tr>
                            <tr>
                                 <th>联系电话：</th>
-                                <td><input class="common-text" name="author" size="50" value="" type="tel"></td>
+                                <td><input class="common-text" name="t_phon" size="50"  type="tel"></td>
                             </tr>
                              <tr>
                                 <th></th>

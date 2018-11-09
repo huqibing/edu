@@ -41,7 +41,7 @@
                         <li><a href="jump.do?target=student"><i class="icon-font">&#xe005;</i>学员管理</a></li>
                         <li><a href="teacher.jsp"><i class="icon-font">&#xe006;</i>教师管理</a></li>
                         <li><a href="message.jsp"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="course.jsp"><i class="icon-font">&#xe012;</i>课程管理</a></li>
+                        <li><a href="jump.do?target=course"><i class="icon-font">&#xe012;</i>课程管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -78,7 +78,7 @@
                             <tr>
                                 <th><i class="require-red">*</i>学员姓名</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="stu_name" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="stu_name" size="50" type="text">
                                 </td>
                             </tr>
                                 <tr>

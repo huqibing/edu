@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>后台管理</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>   
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="js/jquery-1.8.3.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -38,10 +39,10 @@
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
                         <li><a href="news.jsp"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
-                        <li><a href="student.jsp"><i class="icon-font">&#xe005;</i>学员管理</a></li>
-                        <li><a href="teacher.jsp"><i class="icon-font">&#xe006;</i>教师管理</a></li>
+                        <li><a href="jump.do?target=student"><i class="icon-font">&#xe005;</i>学员管理</a></li>
+                        <li><a href="jump.do?target=teacher"><i class="icon-font">&#xe006;</i>教师管理</a></li>
                         <li><a href="message.jsp"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="course.jsp"><i class="icon-font">&#xe012;</i>课程管理</a></li>
+                        <li><a href="jump.do?target=course"><i class="icon-font">&#xe012;</i>课程管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -86,7 +87,7 @@
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="addteacher.jsp"><i class="icon-font"></i>新增教师</a>
+                        <a href="jump.do?target=addteacher"><i class="icon-font"></i>新增教师</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
                         <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
                     </div>
@@ -95,7 +96,7 @@
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>排序</th>
+                            
                             <th>ID</th>
                             <th>教师姓名</th>
                             <th>性别</th>
@@ -103,38 +104,7 @@
                             <th>联系电话</th>
                             <th>操作</th>
                         </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>59</td>
-                            <td>张三</td>
-                            <td>女</td>
-                            <td>22</td>
-                            <td>13312565675</td>
-                            <td>
-                                <a class="link-update" href="updateteacher.jsp">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>59</td>
-                            <td>张三</td>
-                            <td>女</td>
-                            <td>22</td>
-                            <td>13312565675</td>
-                            <td>
-                                <a class="link-update" href="updateteacher.jsp">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
+                        
                     </table>
                     <div class="list-page"> 2 条 1/1 页</div>
                 </div>
@@ -143,5 +113,27 @@
     </div>
     <!--/main-->
 </div>
+<script type="text/javascript">
+       		$.get("teacher/selecteacher.do",function(teachers){
+       			for(var i = 0; i < teachers.length;i++){
+       			$("table").filter(".result-tab").append( 
+       				     		 
+       				"<tr>"+
+       					"<td class=tc>"+"<input name=id[] type=checkbox>"+"</td>"
+                        +"<td>"+teachers[i]["t_id"]+"</td>"
+						+"<td>"+teachers[i]["t_name"]+"</td>"
+						+"<td>"+teachers[i]["t_sex"]+"</td>"
+						+"<td>"+teachers[i]["t_age"]+"</td>"
+						+"<td>"+teachers[i]["t_phon"]+"</td>"
+						+"<td>"
+                                +"<a class=link-update href=jump.do?target=updateteacher&&t_id="+teachers[i]["t_id"]+">"+"修改"+"</a>"+" "
+                                +"<a href=teacher/deleteteacher.do?t_id="+teachers[i]["t_id"]+">"+" 删除"+"</a>"
+                        +"</td>"
+					+"</tr>" 
+				
+       			)    					
+  			}     		
+       		})
+       </script>
 </body>
 </html>

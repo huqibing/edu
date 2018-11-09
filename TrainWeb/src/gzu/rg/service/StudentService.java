@@ -4,7 +4,7 @@ import java.util.List;
 
 import gzu.rg.bean.Student;
 
-public interface SelectStu {
+public interface StudentService {
 	//查询学员信息
 	List<Student> selectStu();
 	

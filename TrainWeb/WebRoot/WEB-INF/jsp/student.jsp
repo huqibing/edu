@@ -39,7 +39,7 @@
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
                         <li><a href="news.jsp"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
-                        <li><a href="addstudent.jsp"><i class="icon-font">&#xe005;</i>学员管理</a></li>
+                        <li><a href="jump.do?target=student"><i class="icon-font">&#xe005;</i>学员管理</a></li>
                         <li><a href="teacher.jsp"><i class="icon-font">&#xe006;</i>教师管理</a></li>
                         <li><a href="message.jsp"><i class="icon-font">&#xe004;</i>留言管理</a></li>
                         <li><a href="course.jsp"><i class="icon-font">&#xe012;</i>课程管理</a></li>
@@ -127,7 +127,7 @@
 						+"<td>"+student[i]["stu_age"]+"</td>"
 						+"<td>"+student[i]["stu_phon"]+"</td>"
 						+"<td>"
-                                +"<a class=link-update href=updatestudent.jsp?id="+student[i]["attribute1"]+">"+"修改"+"</a>"+" "
+                                +"<a class=link-update href=jump.do?target=updatestudent&&id="+student[i]["attribute1"]+">"+"修改"+"</a>"+" "
                                 +"<a href=stu/deletestudent.do?id="+student[i]["attribute1"]+">"+" 删除"+"</a>"
                         +"</td>"
 					+"</tr>" 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import gzu.rg.bean.Student;
-import gzu.rg.service.SelectStu;
+import gzu.rg.service.StudentService;
 
 
 @Controller
@@ -17,7 +17,7 @@ public class EditStudent {
 	
 	//创建service对象
 	@Autowired
-	private SelectStu service;
+	private StudentService service;
 	
 	//添加学员
 	@RequestMapping("addstu.do")

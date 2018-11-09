@@ -9,7 +9,7 @@ import gzu.rg.bean.Student;
 import gzu.rg.dao.StudentDao;
 
 @Service
-public class SelectStuImp implements SelectStu {
+public class StudentServiceImp implements StudentService {
 	
 	@Autowired
 	private StudentDao dao;

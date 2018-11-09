@@ -6,6 +6,7 @@
     <title>后台管理</title>
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<script src="js/jquery-1.8.3.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -36,11 +37,11 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="news.jsp"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
-                        <li><a href="student.jsp"><i class="icon-font">&#xe005;</i>学员管理</a></li>
-                        <li><a href="teacher.jsp"><i class="icon-font">&#xe006;</i>教师管理</a></li>
-                        <li><a href="message.jsp"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="course.jsp"><i class="icon-font">&#xe012;</i>课程管理</a></li>
+                        <li><a href="jump.do?target=news"><i class="icon-font">&#xe008;</i>新闻管理</a></li>
+                        <li><a href="jump.do?target=student"><i class="icon-font">&#xe005;</i>学员管理</a></li>
+                        <li><a href="jump.do?target=teacher"><i class="icon-font">&#xe006;</i>教师管理</a></li>
+                        <li><a href="jump.do?target=message"><i class="icon-font">&#xe004;</i>留言管理</a></li>
+                        <li><a href="jump.do?target=course"><i class="icon-font">&#xe012;</i>课程管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -85,7 +86,7 @@
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="addcourse.jsp"><i class="icon-font"></i>新增课程</a>
+                        <a href="jump.do?target=addcourse"><i class="icon-font"></i>新增课程</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
                         <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
                     </div>
@@ -94,39 +95,11 @@
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>排序</th>
+                            
                             <th>ID</th>
                             <th>课程名</th>
                             <th>任课教师id</th>
                             <th>操作</th>
-                        </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>6</td>
-                            <td>java</td>
-                            <td>2</td>
-                            <td>
-                                <a class="link-update" href="updatecourse.jsp">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>6</td>
-                            <td>java</td>
-                            <td>2</td>
-                            <td>
-                                <a class="link-update" href="updatecourse.jsp">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
                         </tr>
                     </table>
                     <div class="list-page"> 2 条 1/1 页</div>
@@ -136,5 +109,25 @@
     </div>
     <!--/main-->
 </div>
+		<script type="text/javascript">
+       		$.get("course/selectcourse.do",function(course){
+       			for(var i = 0; i < course.length;i++){
+       			$("table").filter(".result-tab").append( 
+       				     		 
+       				"<tr>"+
+       					"<td class=tc>"+"<input name=id[] type=checkbox>"+"</td>"
+                        +"<td>"+course[i]["c_id"]+"</td>"
+						+"<td>"+course[i]["c_name"]+"</td>"
+						+"<td>"+course[i]["c_teacher"]+"</td>"
+						+"<td>"
+                                +"<a class=link-update href=jump.do?target=updatecourse&&c_id="+course[i]["c_id"]+">"+"修改"+"</a>"+" "
+                                +"<a href=course/deletecourse.do?c_id="+course[i]["c_id"]+">"+" 删除"+"</a>"
+                        +"</td>"
+					+"</tr>" 
+				
+       			)    					
+  			}     		
+       		})
+       </script>
 </body>
 </html>
